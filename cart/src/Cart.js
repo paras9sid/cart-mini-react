@@ -3,21 +3,56 @@ import CartItem from "./CartItem";
 
 
 class Cart extends React.Component {
-    render(){
+    constructor(){
+        super(); // calling componenet of parent class --otherwise page display will not render
+        this.state = {
+            products:[
+                {
+                    price : 99,
+                    title : 'Watch',
+                    qty : 1,
+                    img:'',
+                    id:1
+                },
+                {
+                    price : 999,
+                    title : 'Mobile Phone',
+                    qty : 10,
+                    img:'',
+                    id:2
+                },
+                {
+                    price : 9999,
+                    title : 'Laptop',
+                    qty : 5,
+                    img:'',
+                    id:3
+                }
+            ]
+        }
+    }
 
-        //rendering list
-        const arr = [1,2,3,4,5];
+    render(){
+        const { products } = this.state;
         return (
             <div className="cart">   
-                {/* { //rendering list - 12345
-                arr }               */}
-                {arr.map( (item) => {
-                    return item + 5;
-                    //result = 678910 in browser arr every item will be added with +5 1+5=6..so on
-                })} 
+            {/* props can be passed into any CartItem-component like written below */}
+                {/* <CartItem qty={1} price={99} title ={'Watch'} img={''}/> */}
                 {/* <CartItem />
-                <CartItem />
                 <CartItem /> */}
+
+                {/* using props */}
+                {products.map((product)=>{
+                //    return <CartItem product = {product}/>
+                   //to ignore key warning in console
+                   return (
+                        <CartItem 
+                        product = {product} 
+                        key = {product.id}
+                        
+                        />
+                    )
+                })}
             </div>
         );
     }

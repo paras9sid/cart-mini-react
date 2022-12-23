@@ -3,19 +3,12 @@ import React from "react";
 
 class CartItem extends React.Component {
     
-    constructor(){
-        super(); // calling componenet of parent class --otherwise page display will not render
-        this.state = {
-            price : 999,
-            title : 'Mobile Phone',
-            qty : 1,
-            img:''
-        }
+    
 
          //another way of binding - to avoid undefined wrror of this.state ref to onClick func in images below
         // this.increaseQuantity = this.increaseQuantity.bind(this); // another way is arrow functions instead of binding
     
-    }
+    
     //grabbing above state data into jsx below
     
     //arrow functions to avoid binding and achieve same result as binding--as arrow functions automatically bind functions
@@ -65,10 +58,17 @@ class CartItem extends React.Component {
     }
 
     render(){
+        console.log('this.props' , this.props);
 
         //object destructuring -- so that this.state.___ code should not be used to add again below in div action icons
         //object destructuring from state object again
-        const {price , title , qty} = this.state;
+        // const {price , title , qty} = this.state;
+
+        //changed state to props will render prop fields number and item in Cart class CartItem component
+        // const {price , title , qty} = this.props;
+
+        //after adding products state in Cart component
+        const {price , title , qty} = this.props.product;
         return (
             <div className="cart-item">
                 <div className="left-block">
