@@ -25,7 +25,7 @@ class CartItem extends React.Component {
 
         //increasing qty +1 everyt time clicked icon on console
         // this.state.qty +=1;
-        console.log('this',this.state)
+        // console.log('this',this.state)
 
         //setState function from Component class of react above - to enable increase qty function in browser also
         // //setState form1
@@ -48,6 +48,21 @@ class CartItem extends React.Component {
     //     // console.log('test');
     //     console.log('this',this.state)
     // }
+
+
+    decreaseQuantity = () => {
+        //to set qty so that it does not goes below 0
+        const { qty } = this.state;
+        if(qty === 0){
+            return;
+        } 
+
+        this.setState( (prevState) => {
+            return {
+                qty: prevState.qty -1
+            }
+        });
+    }
 
     render(){
 
@@ -87,6 +102,7 @@ class CartItem extends React.Component {
                         className="action-icons" 
                         alt="decrease" 
                         src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
+                        onClick={this.decreaseQuantity}
                         />
                         
                         <img 
