@@ -22,7 +22,25 @@ class CartItem extends React.Component {
     increaseQuantity = () => {
         // testing function - after clicking plus icon test will display in console
         // console.log('test');
+
+        //increasing qty +1 everyt time clicked icon on console
+        // this.state.qty +=1;
         console.log('this',this.state)
+
+        //setState function from Component class of react above - to enable increase qty function in browser also
+        // //setState form1
+        // this.setState({ //caling setState = re render our component with updated value
+        //     qty : this.state.qty +1,  // shallo merging = only change the qty not touch other fields
+        // });
+
+         //setState form 2 - passing cb function - will do shallow merging again like earlier form
+         //if prevState is requried use this
+         this.setState( (prevState) => {
+            return {
+                qty: prevState.qty +1
+            }
+         });
+    
     }
     
     // increaseQuantity(){
