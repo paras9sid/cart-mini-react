@@ -11,8 +11,25 @@ class CartItem extends React.Component {
             qty : 1,
             img:''
         }
+
+         //another way of binding - to avoid undefined wrror of this.state ref to onClick func in images below
+        // this.increaseQuantity = this.increaseQuantity.bind(this); // another way is arrow functions instead of binding
+    
     }
     //grabbing above state data into jsx below
+    
+    //arrow functions to avoid binding and achieve same result as binding--as arrow functions automatically bind functions
+    increaseQuantity = () => {
+        // testing function - after clicking plus icon test will display in console
+        // console.log('test');
+        console.log('this',this.state)
+    }
+    
+    // increaseQuantity(){
+    //     // testing function - after clicking plus icon test will display in console
+    //     // console.log('test');
+    //     console.log('this',this.state)
+    // }
 
     render(){
 
@@ -38,9 +55,28 @@ class CartItem extends React.Component {
 
                     <div className="cart-item-actions">
                         {/* Buttons */}
-                        <img className="action-icons" alt="increase" src="https://cdn-icons-png.flaticon.com/512/992/992651.png"/>
-                        <img className="action-icons" alt="decrease" src="https://cdn-icons-png.flaticon.com/512/992/992683.png"/>
-                        <img className="action-icons" alt="delete" src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"/>
+                        <img 
+                        className="action-icons"
+                        alt="increase" 
+                        src="https://cdn-icons-png.flaticon.com/512/992/992651.png"
+                        // onClick={this.increaseQuantity.bind(this)}
+                        // w/o binding above function it will show state = undefined
+                        //another way - binding done above in state
+                        onClick={this.increaseQuantity}
+                        />
+
+                        <img
+                        className="action-icons" 
+                        alt="decrease" 
+                        src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
+                        />
+                        
+                        <img 
+                        className="action-icons" 
+                        alt="delete" 
+                        src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"
+                        />
+
                     </div>
                 </div>
 

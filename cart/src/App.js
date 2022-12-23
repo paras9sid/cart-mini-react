@@ -4,28 +4,28 @@ import CartItem from './CartItem';
 
 function App() {
 
-  // events 
+  // // events 
 
   
-    function showAlert() {
-      alert("Hello!");
-    }
+  //   function showAlert() {
+  //     alert("Hello!");
+  //   }
   
-    function handleInputchange(e) {
-      console.log(e.target.value);
-    }
+  //   function handleInputchange(e) {
+  //     console.log(e.target.value); // will print word by word in console
+  //   }
   
   return (
     <div className="App">
       
-    <button onClick={showAlert}>Show Alert</button>
+    {/* <button onClick={showAlert}>Show Alert</button>
 
-    <input onChange={handleInputchange} />
+    <input onChange={handleInputchange} /> */}
 
 
-     {/* <h1>Cart</h1> */}
+     <h1>Cart</h1>
      {/* Component imported above top and calling below */}
-     {/* <CartItem /> */}
+     <CartItem />
     </div>
   );
 }
