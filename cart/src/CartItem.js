@@ -5,6 +5,11 @@ class CartItem extends React.Component {
     render(){
         console.log('this.props' , this.props);
         const {price , title , qty} = this.props.product;
+        const {product,
+               onDecreaseQuantity, 
+               onIncreaseQuantity, 
+               onDeleteProduct
+            } = this.props;
         return (
             <div className="cart-item">
                 <div className="left-block">
@@ -27,20 +32,24 @@ class CartItem extends React.Component {
                         // onClick={this.increaseQuantity.bind(this)}
                         // w/o binding above function it will show state = undefined
                         //another way - binding done above in state
-                        onClick={()=>this.props.onIncreaseQuantity(this.props.product)}
+                        // onClick={()=>this.props.onIncreaseQuantity(this.props.product)}
+
+                        // another way -- using props destructuring written in const above
+                        onClick={()=>onIncreaseQuantity(product)}
                         />
 
                         <img
                         className="action-icons" 
                         alt="decrease" 
                         src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
-                        onClick={this.decreaseQuantity}
+                        onClick={()=>onDecreaseQuantity(product)}
                         />
                         
                         <img 
                         className="action-icons" 
                         alt="delete" 
                         src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"
+                        onClick={()=>onDeleteProduct(product.id)}
                         />
 
                     </div>
