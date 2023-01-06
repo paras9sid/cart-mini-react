@@ -12,6 +12,7 @@ class App extends React.Component {
           products:[], // default empty array now as we are fetching data from firebase db
           loading: true,
       }
+      // this.db = firebase.firestore(); new latest version of react not working ,imported firestore above already
     }
    
   componentDidMount() {
@@ -97,13 +98,36 @@ class App extends React.Component {
       return cartTotal;
     }
 
+    //adding product in a firebase 
+    addProduct = () => {
+      // this.db -- new version not working      
+      firestore
+      .collection('products')
+      .add({  // will add product below - id will be auto generated
+        img:'',
+        price:900,
+        qty:3,
+        title:'washing machine'
+      })
+      .then((docRef)=>{
+          console.log('Product added ',docRef);
+      })
+      .catch((error)=>{
+        console.log('error' , error);
+      })
+    }
+
 
  render(){
-    const { products } = this.state;
+    const { products ,loading} = this.state;
     return (
       <div className="App">
         {/* making count in navbar dynamic from fixed/static by using below written function */}
         <Navbar count = {this.getCartCount()}/>
+
+        {/* adding products in firebase - lecture */}
+        <button onClick={this.addProduct} style={{padding :20 , fontSize:20}}>Add a product</button>
+
         <Cart 
          products = {products}
          onIncreaseQuantity = {this.handleIncreaseQuantity}
