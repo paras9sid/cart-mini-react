@@ -101,11 +101,24 @@ class App extends React.Component {
 
   handleDeleteProduct = (id) => {
       const { products } = this.state;
-      const items = products.filter((item)=> item.id !== id); //[{}] will return array of objects(products) of items whose id !== id
+      // const items = products.filter((item)=> item.id !== id); //[{}] will return array of objects(products) of items whose id !== id
       
-      this.setState({
-          products : items
-      })    
+      // this.setState({
+      //     products : items
+      // })    
+
+      //adding del button functionality
+      const docRef = firestore.collection('products').doc(id);
+
+      docRef
+      .delete()
+      .then(() => {
+        console.log('document deleted successfully');
+      })
+      .catch((error) =>  {
+        console.log('error',error);
+      })
+
   }
 
   getCartCount = () => {
