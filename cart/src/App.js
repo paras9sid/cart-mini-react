@@ -21,7 +21,7 @@ class App extends React.Component {
       firestore
       //query for fecthing the product which we want as per our query
       .collection("products") //getting all the products
-      .where('price','>=', 999) // after fetching db we should write query
+      // .where('price','>=', 999) // after fetching db we should write query
       .onSnapshot(snapshot => {
         const products = snapshot.docs.map(doc => {
           const data = doc.data();
@@ -71,7 +71,7 @@ class App extends React.Component {
   }
 
   handleDecreaseQuantity = (product) => {
-      console.log("Please inc the qty" , product);
+      console.log("Please decrease the qty" , product);
       const {products} = this.state;
       const index = products.indexOf(product);
 
