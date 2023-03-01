@@ -13,7 +13,7 @@ const CartItem = (props) => {
             <div className="left-block">
                 {/* importing const style written at the bottom styles for css--inline styles */}
                 {/* src = {product.img} will show the images link address copied in img field in state */}
-                <img style={styles.image} src = {product.img}/>
+                <img style={styles.image} src = {product.img} alt="product_image"/>
             </div>
 
             <div className="right-block">
